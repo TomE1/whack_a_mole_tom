@@ -1,4 +1,5 @@
 let currMoleTile;
+let currPlantTile;
 
 window.onload = function () {
   setGame();
@@ -12,6 +13,8 @@ function setGame() {
     tile.id = i.toString();
     document.getElementById('board').appendChild(tile);
   }
+  setInterval(setMole, 1000);
+  setInterval(setPlant, 2000);
 }
 
 function getRandomTile() {
@@ -21,8 +24,26 @@ function getRandomTile() {
 }
 
 function setMole() {
+  if (currMoleTile) {
+    currMoleTile.innerHTML = '';
+  }
+
   let mole = document.createElement('img');
   mole.src = '../images/monty-mole.png';
 
   let num = getRandomTile();
+  currMoleTile = document.getElementById(num);
+  currMoleTile.appendChild(mole);
+}
+
+function setPlant() {
+  if (currPlantTile) {
+    currPlantTile.innerHTML = '';
+  }
+  let plant = document.createElement('img');
+  plant.src = '../images/piranha-plant.png';
+
+  let num = getRandomTile();
+  currPlantTile = document.getElementById(num);
+  currPlantTile.appendChild(plant);
 }
